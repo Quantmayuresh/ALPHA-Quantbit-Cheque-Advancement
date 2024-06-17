@@ -6,3 +6,15 @@ frappe.ui.form.on('Digital ChequeBook', {
 
 	// }
 });
+
+frappe.ui.form.on('Digital ChequeBook', {
+	setup: function(frm) {
+        frm.set_query("bank_account", function(doc) {
+            return {
+                filters: [
+                    ['Bank Account', 'is_company_account', '=', 1]
+                ]
+            };
+        });
+    }
+});
